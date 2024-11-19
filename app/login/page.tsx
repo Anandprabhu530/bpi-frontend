@@ -2,7 +2,7 @@ import React from "react";
 
 const Login = () => {
   return (
-    <div className="border-2 border-white min-h-screen flex items-center justify-center font-sans">
+    <div className="min-h-screen flex items-center justify-center font-sans">
       <div className="">
         <div className="w-full flex justify-center text-3xl font-semibold pb-6">
           Welcome to&nbsp;
