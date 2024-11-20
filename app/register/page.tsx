@@ -25,6 +25,14 @@ const Register = () => {
           </div>
         </div>
         <div className="pt-4 ">
+          <div className="py-2 text-xl">Mobile Number</div>
+          <input
+            className="outline-none border border-neutral-600 p-2 placeholder:text-neutral-500 bg-[#1b1a1a] rounded-md w-full"
+            placeholder="9876543210"
+            type="tel"
+          />
+        </div>
+        <div className="pt-4 ">
           <div className="py-2 text-xl">Email</div>
           <input
             className="outline-none border border-neutral-600 p-2 placeholder:text-neutral-500 bg-[#1b1a1a] rounded-md w-full"
