@@ -1,5 +1,3 @@
-"use client";
-
 import {useState} from "react";
 
 // https://mobbin.com/apps/revolut-web-538d8553-9169-4343-a90c-66494c577e23/7b40d0d4-cc0e-44d5-bd4a-2ff514b9f898/screens
