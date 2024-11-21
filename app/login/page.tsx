@@ -1,4 +1,4 @@
-import React from "react";
+import loginform from "../actions/loginform";
 
 const Login = () => {
   return (
@@ -8,25 +8,27 @@ const Login = () => {
           Welcome to&nbsp;
           <div className="text-purple-500 pb-4">BPI-Payments!</div>
         </div>
-        <div className="w-[400px]">
-          <div className="py-2 text-xl">Email</div>
+        <form action={loginform} className="w-[400px]">
+          <div className="py-2 text-xl">Mobile Number</div>
           <input
             className="outline-none border border-neutral-600 p-2 placeholder:text-neutral-500 bg-[#1b1a1a] rounded-md w-full"
-            placeholder="youremail@example.com"
-            type="email"
+            placeholder="9876543210"
+            type="number"
+            name="mobilenumber"
           />
 
           <div className="pt-6 pb-2 text-xl">Password</div>
           <input
             className="outline-none border border-neutral-600 p-2 bg-[#1b1a1a] rounded-md w-full"
             type="password"
+            name="password"
           />
-          <div className="pt-6">
+          <button className="pt-6">
             <div className="w-full flex justify-center text-black bg-white cursor-pointer font-semibold p-2 rounded-md">
               Login
             </div>
-          </div>
-        </div>
+          </button>
+        </form>
       </div>
     </div>
   );
