@@ -19,7 +19,7 @@ const Dashboard = () => {
       }
     }
     const fetchDetails = async () => {
-      const res = await fetch("/details", {
+      const res = await fetch("/api/details", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {Accept: "application/json", method: "POST"},
