@@ -4,12 +4,7 @@ import {doc, getDoc} from "firebase/firestore";
 import {redirect} from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function loginform(formData: any) {
-  "use server";
-  const rawFormData = {
-    mobilenumber: formData.get("mobilenumber"),
-    password: formData.get("password"),
-  };
+export default async function loginform(rawFormData: any) {
   const userid = rawFormData.mobilenumber + "@okbpi";
   const refdoc = doc(db, "account", userid);
 
@@ -23,7 +18,11 @@ export default async function loginform(formData: any) {
     if (passwordMatch) {
       redirect(`/dashboard/${userInfo.mobilenumber}`);
     } else {
-      console.log("Not Matched");
+      //Password Not matched code - 1
+      return 1;
     }
+  } else {
+    //user not registered yet
+    return 1;
   }
 }

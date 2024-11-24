@@ -2,10 +2,7 @@ import {useEffect, useState} from "react";
 import Send from "./Send";
 
 const Sendmoney = () => {
-  const [search, setsearch] = useState<string[]>([
-    "9874563210@okbpi",
-    "9876543210@okbpi",
-  ]);
+  const [search, setsearch] = useState<string[]>([]);
   const [inputData, setInputData] = useState("");
   const [toggle, setToggle] = useState(false);
   const [clicked, setClicked] = useState(false);

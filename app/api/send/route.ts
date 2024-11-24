@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {app} from "@/utils/firebase";
 import {getFunctions, httpsCallable} from "firebase/functions";
-const functions = getFunctions();
+const functions = getFunctions(app);
 
 const triggerpayment = httpsCallable(functions, "triggerpayment");
 
