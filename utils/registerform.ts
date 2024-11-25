@@ -4,8 +4,7 @@ import {doc, getDoc, setDoc} from "firebase/firestore";
 import {redirect} from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function registerform(formData: any) {
-  "use server";
+export async function registerform(formData: any) {
   const rawFormData = {
     firstname: formData.get("firstname"),
     lastname: formData.get("lastname"),

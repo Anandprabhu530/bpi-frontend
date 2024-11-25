@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import {registerform} from "@/utils/registerform";
 import {useState} from "react";
 
 const Register = () => {
@@ -71,6 +72,13 @@ const Register = () => {
     if (hasError) {
       return;
     }
+    // const res = await registerform(data);
+    // if (res == 2) {
+    //   setError((prev) => ({
+    //     ...prev,
+    //     email: "User already exists",
+    //   }));
+    // }
   };
 
   return (
@@ -94,7 +102,7 @@ const Register = () => {
             <div className="pb-2 text-xl">Last Name</div>
             <input
               onChange={handleChange}
-              className="outline-none w-full bg-[#1b1a1a] border border-neutral-600 rounded-md p-2 placeholder:text-neutral-500"
+              className="outline-none w-full bg-[#291818] border border-neutral-600 rounded-md p-2 placeholder:text-neutral-500"
               placeholder="Doe"
               name="lastname"
             />
@@ -109,6 +117,11 @@ const Register = () => {
             name="mobilenumber"
             type="tel"
           />
+          {error.mobilenumber && (
+            <span className="text-red-500 text-sm pt-1">
+              {error.mobilenumber}
+            </span>
+          )}
         </div>
         <div className="pt-4 ">
           <div className="py-2 text-xl">Email</div>
@@ -119,6 +132,9 @@ const Register = () => {
             type="email"
             name="email"
           />
+          {error.email && (
+            <span className="text-red-500 text-sm pt-1">{error.email}</span>
+          )}
         </div>
         <div>
           <div className="pt-6 pb-2 text-xl">Password</div>
@@ -128,6 +144,9 @@ const Register = () => {
             type="password"
             name="password"
           />
+          {error.password && (
+            <span className="text-red-500 text-sm pt-1">{error.password}</span>
+          )}
         </div>
         <div>
           <div className="pt-6 pb-2 text-xl">Set your BPI Pin</div>
@@ -137,6 +156,9 @@ const Register = () => {
             type="password"
             name="bpipin"
           />
+          {error.bpipin && (
+            <span className="text-red-500 text-sm pt-1">{error.bpipin}</span>
+          )}
         </div>
         <div className="pt-6">
           <button
