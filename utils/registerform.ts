@@ -4,16 +4,7 @@ import {doc, getDoc, setDoc} from "firebase/firestore";
 import {redirect} from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function registerform(formData: any) {
-  const rawFormData = {
-    firstname: formData.get("firstname"),
-    lastname: formData.get("lastname"),
-    mobilenumber: formData.get("mobilenumber"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-    bpipin: formData.get("bpipin"),
-    balance: 0,
-  };
+export async function registerform(rawFormData: any) {
   const userid = rawFormData.mobilenumber + "@okbpi";
   const refdoc = doc(db, "account", userid);
   const response = await getDoc(refdoc);
