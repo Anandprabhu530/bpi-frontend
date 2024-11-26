@@ -1,13 +1,12 @@
 import {db} from "@/utils/firebase";
 import bcrypt from "bcrypt";
 import {doc, getDoc} from "firebase/firestore";
-import {redirect} from "next/navigation";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const loginform = async (rawFormData: any) => {
+export async function POST(request: Request) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rawFormData = await request.json();
   const userid = rawFormData.mobilenumber + "@okbpi";
   const refdoc = doc(db, "account", userid);
-
   const res = await getDoc(refdoc);
   if (res.exists()) {
     const userInfo = res.data();
@@ -15,14 +14,16 @@ export const loginform = async (rawFormData: any) => {
       rawFormData.password,
       userInfo.password
     );
+
+    console.log(passwordMatch);
     if (passwordMatch) {
-      redirect(`/dashboard/${userInfo.mobilenumber}`);
+      return Response.json(0);
     } else {
       //Password Not matched code - 1
-      return 1;
+      return Response.json(1);
     }
   } else {
     //user not registered yet
-    return 1;
+    return Response.json(1);
   }
-};
+}

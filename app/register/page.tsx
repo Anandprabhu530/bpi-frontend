@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import {registerform} from "@/utils/registerform";
 import {useState} from "react";
+import {redirect} from "next/navigation";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -72,13 +72,19 @@ const Register = () => {
     if (hasError) {
       return;
     }
-    // const res = await registerform(data);
-    // if (res == 2) {
-    //   setError((prev) => ({
-    //     ...prev,
-    //     email: "User already exists",
-    //   }));
-    // }
+    const res = await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }).then((response) => response.json());
+
+    if (res == 2) {
+      setError((prev) => ({
+        ...prev,
+        email: "User already exists",
+      }));
+    } else {
+      redirect("/login");
+    }
   };
 
   return (

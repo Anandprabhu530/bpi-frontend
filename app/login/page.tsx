@@ -1,8 +1,8 @@
 "use client";
-import {loginform} from "../../utils/loginform";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {useState} from "react";
+import {redirect} from "next/navigation";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -47,8 +47,16 @@ const Login = () => {
       return;
     }
 
-    const res = await loginform(data);
-    // 1 represents password mismatch or user does not exists
+    const res = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }).then((response) => response.json());
+
+    // 0 - no error
+    if (res == 0) {
+      redirect(`/dashboard/${data.mobilenumber}`);
+    }
+    // 1 - represents password mismatch or user does not exists
     if (res === 1) {
       setErrors({
         mobilenumber: "",
