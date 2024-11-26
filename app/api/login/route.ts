@@ -15,7 +15,6 @@ export async function POST(request: Request) {
       userInfo.password
     );
 
-    console.log(passwordMatch);
     if (passwordMatch) {
       return Response.json(0);
     } else {

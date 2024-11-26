@@ -18,6 +18,7 @@ const Dashboard = () => {
         data = `/dashboard/${localStorage.getItem("userInfo")}`;
       }
     }
+
     const fetchDetails = async () => {
       const res = await fetch("/api/details", {
         method: "POST",
@@ -27,12 +28,8 @@ const Dashboard = () => {
       if (!res || res.data === null) {
         redirect("/login");
       }
-
-      setTimeout(() => {
-        setUserInfo(res.userInfo);
-      }, 5000);
-
-      localStorage.setItem("userInfo", res.userInfo.mobilenumber);
+      setUserInfo(res);
+      localStorage.setItem("usercache", res);
     };
     fetchDetails();
   }, [pathname]);

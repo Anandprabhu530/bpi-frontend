@@ -48,7 +48,7 @@ const Send = ({senderData}) => {
         <div className="h-[50%] w-full flex items-center justify-center text-5xl">
           <div className="font-semibold">₹</div>
           <input
-            className="pl-2 font-semibold bg-transparent w-[150px] outline-none "
+            className="pl-2 font-semibold bg-transparent w-[150px] outline-none"
             ref={inputRef}
             type="number"
             maxLength={5}
