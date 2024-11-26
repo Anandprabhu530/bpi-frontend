@@ -12,10 +12,10 @@ const Dashboard = () => {
     const arr = pathname.split("/");
     let data = pathname;
     if (arr.length < 3) {
-      if (!localStorage.getItem("userInfo")) {
+      if (!localStorage.getItem("usercache")) {
         redirect("/login");
       } else {
-        data = `/dashboard/${localStorage.getItem("userInfo")}`;
+        data = `/dashboard/${localStorage.getItem("usercache")}`;
       }
     }
 
@@ -28,8 +28,8 @@ const Dashboard = () => {
       if (!res || res.data === null) {
         redirect("/login");
       }
-      setUserInfo(res);
-      localStorage.setItem("usercache", res);
+      setUserInfo(res.userInfo);
+      localStorage.setItem("usercache", res.userInfo.mobilenumber);
     };
     fetchDetails();
   }, [pathname]);

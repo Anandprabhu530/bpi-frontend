@@ -1,25 +1,21 @@
-import {redirect} from "next/navigation";
 import {useEffect, useState} from "react";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const Transactions = ({userInfo}: any) => {
-  const [details, setDetails] = useState(null);
-  console.log(details);
+  const [details, setDetails] = useState<string[] | null>(null);
+
   useEffect(() => {
     const fetchTransactions = async () => {
-      if (!localStorage.getItem("usercache")) {
-        redirect("/login");
-      }
-      const mobileNumber = localStorage.getItem("usercache").mobilenumber;
       const res = await fetch("/api/transactions", {
         method: "POST",
-        body: JSON.stringify(mobileNumber),
+        body: JSON.stringify({number: userInfo.mobilenumber}),
       }).then((response) => response.json());
 
-      console.log(res);
+      setDetails(res);
     };
     fetchTransactions();
-  }, []);
+  }, [userInfo.mobilenumber]);
+
   if (details === null) {
     return (
       <div className="bg-neutral-700 rounded-md w-[350px] h-full animate-pulse"></div>
