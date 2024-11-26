@@ -9,10 +9,10 @@ const Maincontent = ({userInfo}: any) => {
       <div className="basis-1/3">
         <Accountdetails userInfo={userInfo} />
       </div>
-      <div className="basis-1/3">
+      <div className="basis-1/3 border-l pl-8 border-neutral-200">
         <Transactions userInfo={userInfo} />
       </div>
-      <div className="basis-1/3">
+      <div className="basis-1/3 pl-16">
         <Sendmoney />
       </div>
     </div>

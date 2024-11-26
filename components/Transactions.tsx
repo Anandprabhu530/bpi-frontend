@@ -24,9 +24,43 @@ const Transactions = ({userInfo}: any) => {
   return (
     <div>
       <div className="text-2xl font-semibold pb-10">Transactions</div>
-      <div className="flex justify-between w-[350px]">
-        <div>Hello</div>
-        <div>₹180</div>
+      <div className="flex justify-between w-[350px] flex-col">
+        {details.map((singleTransaction, index) => (
+          <div
+            key={index}
+            className="p-4 rounded-md w-full flex justify-between items-center text-lg"
+          >
+            <div
+              className={`${
+                singleTransaction.code === 500
+                  ? "text-neutral-500"
+                  : "text-white"
+              }`}
+            >
+              {singleTransaction.to}
+            </div>
+            <div
+              className={`flex  ${
+                singleTransaction.code === 500
+                  ? "text-neutral-500"
+                  : singleTransaction.debit
+                  ? "text-neutral-200"
+                  : "text-green-400"
+              }`}
+            >
+              {singleTransaction.code === 500 ? (
+                <div>Failed</div>
+              ) : singleTransaction.debit ? (
+                <div>-</div>
+              ) : (
+                <div>+</div>
+              )}
+              <div className="pl-1">
+                {singleTransaction.code !== 500 && singleTransaction.amount}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
