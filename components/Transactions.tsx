@@ -3,12 +3,11 @@ import {useEffect, useState} from "react";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const Transactions = ({userInfo}: any) => {
   const [details, setDetails] = useState<string[] | null>(null);
-
   useEffect(() => {
     const fetchTransactions = async () => {
       const res = await fetch("/api/transactions", {
         method: "POST",
-        body: JSON.stringify({number: userInfo.mobilenumber}),
+        body: JSON.stringify(localStorage.getItem("usercache")),
       }).then((response) => response.json());
 
       setDetails(res);
@@ -44,18 +43,18 @@ const Transactions = ({userInfo}: any) => {
                 singleTransaction.code === 500
                   ? "text-neutral-500"
                   : singleTransaction.debit
-                  ? "text-neutral-200"
+                  ? "text-red-400"
                   : "text-green-400"
               }`}
             >
               {singleTransaction.code === 500 ? (
                 <div>Failed</div>
               ) : singleTransaction.debit ? (
-                <div>-</div>
+                <div>- ₹</div>
               ) : (
-                <div>+</div>
+                <div>+ ₹</div>
               )}
-              <div className="pl-1">
+              <div>
                 {singleTransaction.code !== 500 && singleTransaction.amount}
               </div>
             </div>

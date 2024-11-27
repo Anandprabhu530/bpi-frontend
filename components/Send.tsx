@@ -21,8 +21,9 @@ const Send = ({senderData}) => {
     if (!inputRef.current.value || inputRef.current.value === 0) {
       return;
     }
+
     const dataTosend = {
-      senderId: localStorage.getItem("userInfo") + "@okbpi",
+      senderId: localStorage.getItem("usercache") + "@okbpi",
       receiverId: senderData,
       amount: inputRef.current.value,
       transactionId: uuidv4(),

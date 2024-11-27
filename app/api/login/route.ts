@@ -5,7 +5,9 @@ import {doc, getDoc} from "firebase/firestore";
 export async function POST(request: Request) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const rawFormData = await request.json();
+  console.log(rawFormData);
   const userid = rawFormData.mobilenumber + "@okbpi";
+  console.log(userid);
   const refdoc = doc(db, "account", userid);
   const res = await getDoc(refdoc);
   if (res.exists()) {

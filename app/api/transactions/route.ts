@@ -3,7 +3,7 @@ import {doc, getDoc} from "firebase/firestore";
 
 export async function POST(request: Request) {
   // const dataFromClient = await request.json();
-  // const userid = dataFromClient.number + "@okbpi";
+  // const userid = dataFromClient + "@okbpi";
   // const refdoc = doc(db, "transactions", userid);
   // const res = await getDoc(refdoc);
   // if (res.exists()) {

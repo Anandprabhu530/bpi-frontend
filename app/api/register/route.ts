@@ -21,6 +21,7 @@ export async function POST(request: Request) {
   rawFormData.balance = balance;
 
   await setDoc(doc(db, "account", userid), rawFormData);
+
   //If registered redirect to login
   return Response.json(0);
 }

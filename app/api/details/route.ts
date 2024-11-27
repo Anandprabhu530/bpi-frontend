@@ -16,12 +16,10 @@ export async function POST(request: Request) {
   // return Response.json({data: null});
 
   return Response.json({
-    userInfo: {
-      mobilenumber: "9874563210",
-      lastname: "user",
-      balance: 9740,
-      email: "asdfgh@gmail.com",
-      firstname: "sample",
-    },
+    mobilenumber: "9874563210",
+    lastname: "user",
+    balance: 9740,
+    email: "asdfgh@gmail.com",
+    firstname: "sample",
   });
 }

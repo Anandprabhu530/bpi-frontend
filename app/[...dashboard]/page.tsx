@@ -28,8 +28,9 @@ const Dashboard = () => {
       if (!res || res.data === null) {
         redirect("/login");
       }
-      setUserInfo(res.userInfo);
-      localStorage.setItem("usercache", res.userInfo.mobilenumber);
+      setUserInfo(res);
+      console.log(res);
+      localStorage.setItem("usercache", res.mobilenumber);
     };
     fetchDetails();
   }, [pathname]);
