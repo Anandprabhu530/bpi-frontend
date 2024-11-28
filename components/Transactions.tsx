@@ -15,14 +15,23 @@ const Transactions = ({userInfo}: any) => {
     fetchTransactions();
   }, [userInfo.mobilenumber]);
 
+  console.log(details);
   if (details === null) {
     return (
       <div className="bg-neutral-700 rounded-md w-[350px] h-full animate-pulse"></div>
     );
   }
+  if (details.data === null) {
+    return (
+      <div className="bg-neutral-700 rounded-md w-[350px] h-full p-4">
+        {" "}
+        No Transactions found!
+      </div>
+    );
+  }
   return (
     <div>
-      <div className="text-2xl font-semibold pb-10">Transactions</div>
+      <div className="text-2xl font-semibold pb-10">Recent Transactions</div>
       <div className="flex justify-between w-[350px] flex-col">
         {details.map((singleTransaction, index) => (
           <div
@@ -36,7 +45,7 @@ const Transactions = ({userInfo}: any) => {
                   : "text-white"
               }`}
             >
-              {singleTransaction.to}
+              {singleTransaction.from}
             </div>
             <div
               className={`flex  ${

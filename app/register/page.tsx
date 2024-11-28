@@ -108,7 +108,7 @@ const Register = () => {
             <div className="pb-2 text-xl">Last Name</div>
             <input
               onChange={handleChange}
-              className="outline-none w-full bg-[#291818] border border-neutral-600 rounded-md p-2 placeholder:text-neutral-500"
+              className="outline-none w-full bg-[#1b1a1a] border border-neutral-600 rounded-md p-2 placeholder:text-neutral-500"
               placeholder="Doe"
               name="lastname"
             />

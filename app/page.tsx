@@ -1,7 +1,12 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <div className="border-2 border-white min-h-screen">
-      <div>Hello World</div>
+    <div className="border-2 border-white min-h-screen flex items-center justify-center text-3xl flex-col">
+      <div>Welcome to BPI Pay</div>
+      <Link href={"/register"} className="text-blue-400 underline pt-6">
+        Register here
+      </Link>
     </div>
   );
 }
