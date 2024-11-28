@@ -1,5 +1,8 @@
+import {QRCodeSVG} from "qrcode.react";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const Accountdetails = ({userInfo}: any) => {
+  const value = userInfo.mobilenumber + "@okbpi";
   return (
     <div>
       <div className="text-2xl font-semibold">Account</div>
@@ -13,7 +16,7 @@ const Accountdetails = ({userInfo}: any) => {
       )}
       <div className="pt-10">
         <div className="w-[300px] h-[300px] bg-white text-black flex justify-center items-center rounded-md">
-          QR Code
+          <QRCodeSVG value={value} size={200} level="H" />
         </div>
         <div className="w-[300px] flex justify-center pt-1 text-neutral-300 text-sm">
           Scan to receive with BPI

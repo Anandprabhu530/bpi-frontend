@@ -15,7 +15,6 @@ const Transactions = ({userInfo}: any) => {
     fetchTransactions();
   }, [userInfo.mobilenumber]);
 
-  console.log(details);
   if (details === null) {
     return (
       <div className="bg-neutral-700 rounded-md w-[350px] h-full animate-pulse"></div>
