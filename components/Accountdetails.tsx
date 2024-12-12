@@ -2,9 +2,10 @@ import {QRCodeSVG} from "qrcode.react";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const Accountdetails = ({userInfo}: any) => {
-  const value = userInfo.mobilenumber + "@okbpi";
+  const value = userInfo.mobilenumber;
   return (
     <div>
+      <time dateTime="2016-10-25" suppressHydrationWarning />
       <div className="text-2xl font-semibold">Account</div>
       {userInfo.balance ? (
         <div className="bg-white text-black w-[300px] h-[120px] mt-10 rounded-md p-6">

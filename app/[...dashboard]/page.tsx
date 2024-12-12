@@ -53,7 +53,7 @@ const Dashboard = () => {
 
   // Render the Maincontent component with user information
   return (
-    <div className="border-2 border-white min-h-screen flex px-32 py-16">
+    <div className="min-h-screen flex px-32 py-16">
       <Maincontent userInfo={userInfo} />
     </div>
   );

@@ -19,7 +19,7 @@ export async function POST(request: Request) {
   const hashedpin = await bcrypt.hash(rawFormData.bpipin, saltRounds);
 
   // generate a random balance for now
-  const balance = Math.floor(Math.random() * 10000);
+  const balance = 100000;
   rawFormData.password = hashedPassword;
   rawFormData.bpipin = hashedpin;
   rawFormData.balance = balance;

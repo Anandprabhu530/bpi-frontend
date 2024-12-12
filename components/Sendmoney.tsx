@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Send from "./Send";
 
-const Sendmoney = () => {
+const Sendmoney = ({userInfo}) => {
   const [search, setsearch] = useState<string[]>([]);
   const [inputData, setInputData] = useState("");
   const [toggle, setToggle] = useState(false);
@@ -39,7 +39,7 @@ const Sendmoney = () => {
     <div className="basis-1/3">
       <div className="text-2xl font-semibold pb-10">Send and Receive Money</div>
       <div className="flex gap-4 flex-col">
-        <div className="w-[300px] flex justify-center bg-white text-black font-semibold py-2 rounded-md">
+        <div className="cursor-pointer w-[300px] flex justify-center bg-white text-black font-semibold py-2 rounded-md">
           Scan to pay
         </div>
         <div className="flex w-[300px] gap-4 items-center ">
@@ -62,18 +62,21 @@ const Sendmoney = () => {
         className={`w-[300px] bg-neutral-900 h-fit text-white rounded-md mt-4
             ${search.length === 0 ? "hidden" : ""}`}
       >
-        {search.map((solo_data, index) => (
-          <div
-            key={index}
-            className="w-full p-4 flex gap-4 border-b border-neutral-800 border-x cursor-pointer items-center"
-            onClick={() => handleClick(index)}
-          >
-            <div className="w-[30px] h-[30px] rounded-full bg-neutral-400 flex items-center justify-center text-black font-semibold">
-              {solo_data[0]}
-            </div>
-            <div>{solo_data}</div>
-          </div>
-        ))}
+        {search.map(
+          (solo_data, index) =>
+            solo_data !== userInfo.mobilenumber + "@okbpi" && (
+              <div
+                key={index}
+                className="w-full p-4 flex gap-4 border-b border-neutral-800 border-x cursor-pointer items-center"
+                onClick={() => handleClick(index)}
+              >
+                <div className="w-[30px] h-[30px] rounded-full bg-neutral-400 flex items-center justify-center text-black font-semibold">
+                  {solo_data[0]}
+                </div>
+                <div>{solo_data}</div>
+              </div>
+            )
+        )}
       </div>
     </div>
   );

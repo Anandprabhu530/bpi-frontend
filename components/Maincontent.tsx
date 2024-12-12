@@ -13,7 +13,7 @@ const Maincontent = ({userInfo}: any) => {
         <Transactions userInfo={userInfo} />
       </div>
       <div className="basis-1/3 pl-16">
-        <Sendmoney />
+        <Sendmoney userInfo={userInfo} />
       </div>
     </div>
   );
