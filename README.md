@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BPI - (Basic Payment Interface)
 
-## Getting Started
+I developed this project in order to mimic and understand the behavior of UPI system. Through out the project, I understood a how payments are generally processed in UPI with NPCI.
 
-First, run the development server:
+This repository consists of code related to the frontend of the application.
+
+Backend code can be found [here](https://github.com/Anandprabhu530/bpi-gcp-backend.git)
+
+Firebase Functions code can be found [here](https://github.com/Anandprabhu530/bpi-firebase-functions)
+
+## Installation:
 
 ```bash
+git clone https://github.com/Anandprabhu530/bpi-frontend
+cd [your project directory]
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Frontend calls the firebase functions via httpsCallable to initiate a transaction.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Firebase functions verifies the authenticity of transactions and transfers data related to transactions to the Pub/Sub.
 
-## Learn More
+The Pub/Sub message is consumed by cloud run and then transaction is processed. The status of the transaction will be updated in firestore.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The frontend constanly pools firestore and checks the status of payments with the paymentId. This is then reflected in frontend according to state of the transaction.
